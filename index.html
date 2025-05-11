@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birkin Bag Savings Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label, input[type="number"], button {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #f50057;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Birkin Bag Savings Calculator</h1>
+
+    <label for="savings">How much money (in thousands) will you save each month for the Birkin bag?</label>
+    <input type="number" id="savings" placeholder="Enter your monthly savings (in thousands of $)" min="1">
+
+    <label for="bagPrice">Choose a Birkin model:</label>
+    <select id="bagPrice">
+      <option value="10400">Birkin 25 Togo Leather ($10,400)</option>
+      <option value="10500">Birkin 25 Swift Leather ($10,500)</option>
+      <option value="10900">Birkin 25 Epsom Leather ($10,900)</option>
+      <option value="19700">Birkin 25 Ostrich Leather ($19,700)</option>
+      <option value="11600">Birkin 30 Togo Leather ($11,600)</option>
+    </select>
+
+    <button onclick="calculateTime()">Calculate Savings Time</button>
+
+    <h3 id="result"></h3>
+
+    <img src="season 6 netflix GIF by Gilmore Girls.gif" alt="Season 6 Netflix GIF">
+  </div>
+
+  <script>
+    function calculateTime() {
+      var savings = document.getElementById("savings").value * 1000;
+      var bagPrice = document.getElementById("bagPrice").value;
+      
+      if (savings <= 0) {
+        alert("Please enter a valid amount of monthly savings!");
+        return;
+      }
+      
+      var months = Math.ceil(bagPrice / savings);
+      var years = Math.floor(months / 12);
+      months = months % 12;
+
+      var resultText = "It will take you " + years + " years and " + months + " months to save for this Birkin bag.";
+      document.getElementById("result").textContent = resultText;
+    }
+  </script>
+</body>
+</html>
